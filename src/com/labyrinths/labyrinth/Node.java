@@ -1,30 +1,21 @@
 package com.labyrinths.labyrinth;
 
 import java.awt.Point;
+import java.util.Objects;
 
 public class Node {
 
-  public Node(int x, int y) {
+  Node(int x, int y) {
     this.x = x;
     this.y = y;
-    this.id = 10*y + x;
   }
 
-  public Node(Point location) {
-    this(location.x, location.y);
-  }
-
-  private int id;
-  private int x;
-  private int y;
+  private final int x;
+  private final int y;
   private Node up;
   private Node right;
   private Node down;
   private Node left;
-
-  public int getId() {
-    return id;
-  }
 
   public Point getPoint() {
     return new Point(x, y);
@@ -34,25 +25,17 @@ public class Node {
     return up;
   }
 
-  public void setUp(Node up) {
+  void setUp(Node up) {
     this.up = up;
     up.down = this;
   }
 
-  public Node getRight() {
-    return right;
-  }
-
-  public void setRight(Node right) {
+  void setRight(Node right) {
     this.right = right;
     right.left = this;
   }
 
-  public Node getDown() {
-    return down;
-  }
-
-  public void setDown(Node down) {
+  void setDown(Node down) {
     this.down = down;
     down.up = this;
   }
@@ -61,12 +44,46 @@ public class Node {
     return left;
   }
 
-  public void setLeft(Node left) {
+  void setLeft(Node left) {
     this.left = left;
     left.right = this;
   }
 
-  public Node[] getNeighborArray() {
-    return new Node[] { up, right, down, left};
+  public Node[] getNeighbors() {
+    return new Node[] { up, right, down, left };
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Node node = (Node) o;
+    return x == node.x &&
+        y == node.y &&
+        Objects.equals(up != null, node.up != null) &&
+        Objects.equals(right != null, node.right != null) &&
+        Objects.equals(down != null, node.down != null) &&
+        Objects.equals(left != null, node.left != null);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(x, y, up != null, right != null, down != null, left != null);
+  }
+
+  @Override
+  public String toString() {
+    return "Node{" +
+        "x=" + x +
+        ", y=" + y +
+        ", up=" + (up != null) +
+        ", right=" + (right != null) +
+        ", down=" + (down != null) +
+        ", left=" + (left != null) +
+        '}';
   }
 }
