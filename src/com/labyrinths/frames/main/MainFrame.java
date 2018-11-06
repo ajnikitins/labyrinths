@@ -86,7 +86,7 @@ public class MainFrame {
     return contentPanel;
   }
 
-  private boolean lock;
+  private boolean lock = true;
   private JPanel contentPanel;
   private JTextField seedInput;
   private JButton randomButton;
