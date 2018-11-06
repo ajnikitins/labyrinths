@@ -26,7 +26,7 @@ public class Node {
     return id;
   }
 
-  public Point getLocation() {
+  public Point getPoint() {
     return new Point(x, y);
   }
 
@@ -34,21 +34,13 @@ public class Node {
     return up;
   }
 
-  public Node getRight() {
-    return right;
-  }
-
-  public Node getDown() {
-    return down;
-  }
-
-  public Node getLeft() {
-    return left;
-  }
-
   public void setUp(Node up) {
     this.up = up;
     up.down = this;
+  }
+
+  public Node getRight() {
+    return right;
   }
 
   public void setRight(Node right) {
@@ -56,13 +48,25 @@ public class Node {
     right.left = this;
   }
 
+  public Node getDown() {
+    return down;
+  }
+
   public void setDown(Node down) {
     this.down = down;
     down.up = this;
   }
 
+  public Node getLeft() {
+    return left;
+  }
+
   public void setLeft(Node left) {
     this.left = left;
     left.right = this;
+  }
+
+  public Node[] getNeighborArray() {
+    return new Node[] { up, right, down, left};
   }
 }
