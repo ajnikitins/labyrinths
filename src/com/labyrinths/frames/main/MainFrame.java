@@ -1,5 +1,8 @@
-package com.labyrinths.frames;
+package com.labyrinths.frames.main;
 
+import com.labyrinths.frames.labyrinth.LabyrinthFrame;
+import com.labyrinths.labyrinth.Labyrinth;
+import com.labyrinths.solvers.Solver;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -28,6 +31,9 @@ public class MainFrame extends JFrame {
         int width = widthSlider.getValue();
         int height = heightSlider.getValue();
         long seed = Long.parseLong(seedInput.getText());
+
+        var labyrinth = new Labyrinth(width, height, seed);
+        new LabyrinthFrame(labyrinth, new Solver());
       }
     });
   }

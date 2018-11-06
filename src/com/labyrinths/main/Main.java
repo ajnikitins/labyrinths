@@ -1,6 +1,6 @@
 package com.labyrinths.main;
 
-import com.labyrinths.frames.MainFrame;
+import com.labyrinths.frames.main.MainFrame;
 import javax.swing.JFrame;
 
 public class Main {
