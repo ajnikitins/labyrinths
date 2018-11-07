@@ -2,7 +2,8 @@ package com.labyrinths.frames.main;
 
 import com.labyrinths.frames.labyrinth.LabyrinthFrame;
 import com.labyrinths.labyrinth.Labyrinth;
-import com.labyrinths.solvers.DijkstraSolver;
+import com.labyrinths.solvers.BreadthFirstSolver;
+import com.labyrinths.solvers.DepthFirstSolver;
 import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -56,7 +57,8 @@ public class MainFrame {
         long seed = Long.parseLong(seedInput.getText());
 
         var labyrinth = new Labyrinth(width, height, seed);
-        new LabyrinthFrame(labyrinth, new DijkstraSolver());
+        new LabyrinthFrame("BFS", labyrinth, new BreadthFirstSolver());
+        new LabyrinthFrame("DFS", labyrinth, new DepthFirstSolver());
       }
     });
 
