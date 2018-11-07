@@ -26,12 +26,12 @@ public class MainFrame {
         int width;
         int height;
         if (lock) {
-          int size = random.nextInt(64) + 1;
+          int size = random.nextInt(widthSlider.getMaximum()) + 1;
           width = size;
           height = size;
         } else {
-          width = random.nextInt(64) + 1;
-          height = random.nextInt(64) + 1;
+          width = random.nextInt(widthSlider.getMaximum()) + 1;
+          height = random.nextInt(heightSlider.getMaximum()) + 1;
         }
         widthSlider.setValue(width);
         heightSlider.setValue(height);
